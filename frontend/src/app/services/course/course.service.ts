@@ -29,7 +29,7 @@ export class CourseService {
     return this.httpClient.get(`${this.courseUrl}/${id}`, this.httpOptions)
   }
 
-  updateCourse(id:string, course:Course): Observable<any> {
+  updateCourse(id: string | undefined, course: Course): Observable<any> {
     return this.httpClient.put(`${this.courseUrl}/${id}`, course, this.httpOptions)
   }
 

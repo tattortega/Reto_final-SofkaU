@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CourseService} from "../../services/course/course.service";
 import {Course} from "../../interfaces/course";
 import {ToastrService} from "ngx-toastr";
@@ -13,6 +13,9 @@ export class CourseComponent implements OnInit {
 
   courses: Course[] | undefined;
   createCourseForm: FormGroup;
+  tittle = 'CREACIÓN DE CURSO'
+  submitted = false
+  id: string | undefined
 
   constructor(
     private courseService: CourseService,
@@ -29,20 +32,23 @@ export class CourseComponent implements OnInit {
     this.getCourses()
   }
 
-  createCourse(courseName: string, courseDescription: string, approvalValue: number): void {
+  createCourse(): void {
     this.courseService.createCourse({
-      name: courseName,
-      description: courseDescription,
-      approvalValue: approvalValue
+      name: this.createCourseForm.value.name,
+      description: this.createCourseForm.value.description,
+      approvalValue: this.createCourseForm.value.approvalValue
     } as Course)
-      .subscribe(() => {
-        this.toastr.success('El curso fue registrado con éxito!', 'Curso Registrado', {
-          positionClass: 'toast-bottom-right'
-        });
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
-      })
+      .subscribe({
+        next: () => {
+          this.toastr.success('El curso fue registrado con éxito!', 'Curso Registrado', {
+            positionClass: 'toast-bottom-right'
+          })
+        }, complete: () => {
+          setTimeout(function () {
+            window.location.reload()
+          }, 1000)
+        }
+      });
   }
 
   getCourses(): void {
@@ -52,37 +58,54 @@ export class CourseComponent implements OnInit {
   }
 
   createEditCourse() {
+    this.submitted = true;
 
+    if (this.createCourseForm.invalid) {
+      this.toastr.error('Todos los campos son obligatorios', 'Intenta de nuevo', {
+        positionClass: 'toast-bottom-right'
+      })
+    }
+    if (this.tittle == 'CREACIÓN DE CURSO') {
+      this.createCourse()
+    } else {
+      this.updateCourse()
+    }
   }
 
   isUpdate(course: Course): void {
-    this.courseService.getCourse(course.id).subscribe(courses => {
+    this.tittle = 'EDICIÓN DE CURSO'
+    this.id = course.id
+    this.courseService.getCourse(this.id).subscribe(courses => {
       this.createCourseForm.setValue({
         name: courses.name,
         description: courses.description,
         approvalValue: courses.approvalValue
       })
     })
-    this.updateCourse(course.id )
   }
 
-  updateCourse(id: string): void {
+  updateCourse(): void {
     const courseUpdated: any = {
       name: this.createCourseForm.value.name,
       description: this.createCourseForm.value.description,
       approvalValue: this.createCourseForm.value.approvalValue
     }
-    this.courseService.updateCourse(id, courseUpdated).subscribe(course => {
-      this.toastr.success('El curso fue actualizo con éxito!', 'Curso Actualizado', {
-        positionClass: 'toast-bottom-right'
-      });
-      this.getCourses()
+    this.courseService.updateCourse(this.id, courseUpdated).subscribe({
+      next: () => {
+        this.toastr.success('El curso fue actualizado con éxito!', 'Curso Actualizado', {
+          positionClass: 'toast-bottom-right'
+        })
+      }, complete: () => {
+        setTimeout(function () {
+          window.location.reload()
+        }, 1000)
+      }
     })
   }
 
   deleteCourse(id: string): void {
     this.courseService.deleteCourse(id).subscribe({
-      next: course => {
+      next: () => {
         this.toastr.warning('El curso fue eliminado con éxito!', 'Curso Eliminado', {
           positionClass: 'toast-bottom-right'
         })
