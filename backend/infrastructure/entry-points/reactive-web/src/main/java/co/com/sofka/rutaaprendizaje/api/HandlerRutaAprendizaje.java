@@ -28,6 +28,13 @@ public class HandlerRutaAprendizaje {
                 .body(rutaAprendizajeUseCase.listarRutaAprendizaje(), RutaAprendizaje.class);
     }
 
+    public Mono<ServerResponse> listarPorIdRutaAprendizajeUseCase(ServerRequest serverRequest) {
+        var id = serverRequest.pathVariable("id");
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(rutaAprendizajeUseCase.listarPorIdRutaAprendizaje(id), RutaAprendizaje.class);
+    }
+
     public Mono<ServerResponse> actualizarRutaAprendizajeUseCase(ServerRequest serverRequest) {
         var id = serverRequest.pathVariable("id");
         return serverRequest.bodyToMono(RutaAprendizaje.class)

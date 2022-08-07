@@ -19,6 +19,10 @@ public class RutaAprendizajeUseCase {
         return rutaAprendizajeRepository.findAll();
     }
 
+    public Mono<RutaAprendizaje> listarPorIdRutaAprendizaje(String id) {
+        return rutaAprendizajeRepository.findById(id);
+    }
+
     public Mono<RutaAprendizaje> actualizarRutaAprendizaje(String id, RutaAprendizaje rutaAprendizaje) {
         return rutaAprendizajeRepository.update(id, rutaAprendizaje);
     }

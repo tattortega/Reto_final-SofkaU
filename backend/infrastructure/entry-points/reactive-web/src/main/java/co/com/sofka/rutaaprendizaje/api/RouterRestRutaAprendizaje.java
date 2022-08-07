@@ -15,6 +15,7 @@ public class RouterRestRutaAprendizaje {
     public RouterFunction<ServerResponse> routerFunction(HandlerRutaAprendizaje handlerRutaAprendizaje) {
         return route(POST("/api/ruta/crear"), handlerRutaAprendizaje::crearRutaAprendizajeUseCase)
                 .andRoute(GET("/api/ruta/listar"), handlerRutaAprendizaje::listarRutaAprendizajeUseCase)
+                .andRoute(GET("/api/ruta/listar/{id}"), handlerRutaAprendizaje::listarPorIdRutaAprendizajeUseCase)
                 .andRoute(POST("/api/ruta/actualizar/{id}"), handlerRutaAprendizaje::actualizarRutaAprendizajeUseCase)
                 .andRoute(DELETE("/api/ruta/eliminar/{id}"), handlerRutaAprendizaje::eliminarRutaAprendizajeUseCase);
     }
