@@ -8,11 +8,10 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
-
 @Configuration
 public class RouterRestRutaAprendizaje {
     @Bean
-    public RouterFunction<ServerResponse> routerFunction(HandlerRutaAprendizaje handlerRutaAprendizaje) {
+    public RouterFunction<ServerResponse> routerFunctionRutaAprendizaje(HandlerRutaAprendizaje handlerRutaAprendizaje) {
         return route(POST("/api/ruta/crear"), handlerRutaAprendizaje::crearRutaAprendizajeUseCase)
                 .andRoute(GET("/api/ruta/listar"), handlerRutaAprendizaje::listarRutaAprendizajeUseCase)
                 .andRoute(GET("/api/ruta/listar/{id}"), handlerRutaAprendizaje::listarPorIdRutaAprendizajeUseCase)
