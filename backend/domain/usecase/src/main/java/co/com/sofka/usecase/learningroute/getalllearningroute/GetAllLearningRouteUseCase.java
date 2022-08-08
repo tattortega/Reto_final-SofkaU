@@ -5,12 +5,15 @@ import co.com.sofka.model.learningroute.gateways.LearningRouteRepository;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 
+import java.util.function.Supplier;
+
 @RequiredArgsConstructor
-public class GetAllLearningRouteUseCase {
+public class GetAllLearningRouteUseCase implements Supplier<Flux<LearningRoute>> {
 
     private final LearningRouteRepository learningRouteRepository;
 
-    public Flux<LearningRoute> getAllLearningRoute() {
+    @Override
+    public Flux<LearningRoute> get() {
         return learningRouteRepository.findAll();
     }
 }

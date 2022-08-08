@@ -4,12 +4,15 @@ import co.com.sofka.model.learningroute.gateways.LearningRouteRepository;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
+import java.util.function.Function;
+
 @RequiredArgsConstructor
-public class DeleteLearningRouteUseCase {
+public class DeleteLearningRouteUseCase implements Function<String, Mono<Void>> {
 
     private final LearningRouteRepository learningRouteRepository;
 
-    public Mono<Void> deleteLearningRoute(String id) {
+    @Override
+    public Mono<Void> apply(String id) {
         return learningRouteRepository.deleteById(id);
     }
 }

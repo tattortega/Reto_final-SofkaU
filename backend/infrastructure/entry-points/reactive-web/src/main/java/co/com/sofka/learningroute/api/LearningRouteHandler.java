@@ -27,20 +27,20 @@ public class LearningRouteHandler {
         return serverRequest.bodyToMono(LearningRoute.class)
                 .flatMap(learningRoute -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
-                        .body(createLearningRouteUseCase.createLearningRoute(learningRoute), LearningRoute.class));
+                        .body(createLearningRouteUseCase.apply(learningRoute), LearningRoute.class));
     }
 
     public Mono<ServerResponse> getAllLearningRoute(ServerRequest serverRequest) {
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(getAllLearningRouteUseCase.getAllLearningRoute(), LearningRoute.class);
+                .body(getAllLearningRouteUseCase.get(), LearningRoute.class);
     }
 
     public Mono<ServerResponse> getLearningRoute(ServerRequest serverRequest) {
         var id = serverRequest.pathVariable("id");
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(getLearningRouteUseCase.getLearningRoute(id), LearningRoute.class);
+                .body(getLearningRouteUseCase.apply(id), LearningRoute.class);
     }
 
     public Mono<ServerResponse> updateLearningRoute(ServerRequest serverRequest) {
@@ -48,13 +48,13 @@ public class LearningRouteHandler {
         return serverRequest.bodyToMono(LearningRoute.class)
                 .flatMap(element -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
-                        .body(updateLearningRouteUseCase.updateLearningRoute(id, element), LearningRoute.class));
+                        .body(updateLearningRouteUseCase.apply(id, element), LearningRoute.class));
     }
 
     public Mono<ServerResponse> deleteLearningRoute(ServerRequest serverRequest) {
         var id = serverRequest.pathVariable("id");
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(deleteLearningRouteUseCase.deleteLearningRoute(id), LearningRoute.class);
+                .body(deleteLearningRouteUseCase.apply(id), LearningRoute.class);
     }
 }

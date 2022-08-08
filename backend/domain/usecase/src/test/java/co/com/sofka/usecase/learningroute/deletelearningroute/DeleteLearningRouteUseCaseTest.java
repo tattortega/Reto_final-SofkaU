@@ -1,8 +1,7 @@
-package co.com.sofka.usecase.learningroute;
+package co.com.sofka.usecase.learningroute.deletelearningroute;
 
 import co.com.sofka.model.learningroute.LearningRoute;
 import co.com.sofka.model.learningroute.gateways.LearningRouteRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -13,10 +12,10 @@ import reactor.test.StepVerifier;
 
 import static org.mockito.Mockito.when;
 
-class CrearLearningRouteUseCaseTest {
+class DeleteLearningRouteUseCaseTest {
 
     @InjectMocks
-    RutaAprendizajeUseCase rutaAprendizajeUseCase;
+    DeleteLearningRouteUseCase deleteLearningRouteUseCase;
 
     @Mock
     LearningRouteRepository learningRouteRepository;
@@ -27,7 +26,7 @@ class CrearLearningRouteUseCaseTest {
     }
 
     @Test
-    void crearRutaAprendizajeTest() {
+    void deleteLearningRouteTest() {
         LearningRoute learningRoute = LearningRoute.builder()
                 .id("1")
                 .name("ruta 1")
@@ -36,16 +35,9 @@ class CrearLearningRouteUseCaseTest {
                 .prerequisite("prerrequisito")
                 .build();
 
-        when(learningRouteRepository.findById("1")).thenReturn(Mono.just(learningRoute));
+        when(learningRouteRepository.deleteById("1")).thenReturn(Mono.empty());
 
-        StepVerifier.create(rutaAprendizajeUseCase.listarPorIdRutaAprendizaje("1"))
-                .assertNext(ruta -> {
-                    Assertions.assertEquals("1", ruta.getId());
-                    Assertions.assertEquals("ruta 1", ruta.getName());
-                    Assertions.assertEquals("descripcion", ruta.getDescription());
-                    Assertions.assertEquals(1, ruta.getLevel());
-                    Assertions.assertEquals("prerrequisito", ruta.getPrerequisite());
-                })
+        StepVerifier.create(deleteLearningRouteUseCase.apply("1"))
                 .expectComplete()
                 .verify();
     }
