@@ -36,14 +36,6 @@ export class CourseFormComponent implements OnInit {
   loadCourse(course: Course | undefined) {
     // @ts-ignore
     this.createCourseForm.patchValue(course)
-    // @ts-ignore
-    // this.courseService.getCourse(course.id).subscribe(courses => {
-    //   this.createCourseForm.setValue({
-    //     name: courses.name,
-    //     description: courses.description,
-    //     approvalValue: courses.approvalValue
-    //   })
-    // })
   }
 
   saveCourse() {
