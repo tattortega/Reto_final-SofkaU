@@ -8,11 +8,14 @@ import {AppComponent} from './app.component';
 import {CourseComponent} from './components/course/course.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import { CourseFormComponent } from './components/modal/course-form/course-form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CourseComponent
+    CourseComponent,
+    CourseFormComponent
   ],
   imports: [
     BrowserModule,
@@ -20,10 +23,12 @@ import {ReactiveFormsModule} from "@angular/forms";
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CourseFormComponent]
 })
 export class AppModule {
 }
