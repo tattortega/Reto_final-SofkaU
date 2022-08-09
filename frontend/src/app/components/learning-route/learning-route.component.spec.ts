@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RutaAprendizajeComponent } from './ruta-aprendizaje.component';
+import { RutaAprendizajeComponent } from './learning-route.component';
 
 describe('RutaAprendizajeComponent', () => {
   let component: RutaAprendizajeComponent;

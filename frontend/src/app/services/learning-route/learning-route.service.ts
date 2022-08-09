@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RutaAprendizaje } from '../../interfaces/ruta-aprendizaje'
+import { LearningRoute } from '../../interfaces/learning-route'
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RutaaprendizajeService {
+export class LearningRouteService {
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,23 +16,23 @@ export class RutaaprendizajeService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  crearRutaAprendizaje(ruta: RutaAprendizaje): Observable<any> {
+  createLearningRoute(ruta: LearningRoute): Observable<any> {
     return this.httpClient.post(this.url, ruta, this.httpOptions)
   }
 
-  listarRutaAprendizaje(): Observable<any> {
+  getAllLearningRoute(): Observable<any> {
     return this.httpClient.get(this.url, this.httpOptions)
   }
 
-  listarPorIdRutaAprendizaje(id: string): Observable<any> {
+  getLearningRoute(id: string): Observable<any> {
     return this.httpClient.get(`${this.url}/${id}`, this.httpOptions)
   }
 
-  actualzarRutaAprendizaje(id: string, ruta: RutaAprendizaje): Observable<any> {
+  updateLearningRoute(id: string | undefined, ruta: LearningRoute): Observable<any> {
     return this.httpClient.put(`${this.url}/${id}`, ruta, this.httpOptions)
   }
 
-  eliminarRutaAprendizaje(id: string): Observable<any> {
+  deleteLearningRoute(id: string): Observable<any> {
     return this.httpClient.delete(`${this.url}/${id}`, this.httpOptions)
   }
 }
