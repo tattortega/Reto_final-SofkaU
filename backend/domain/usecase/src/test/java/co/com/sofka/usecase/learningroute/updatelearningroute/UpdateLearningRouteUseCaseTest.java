@@ -44,6 +44,7 @@ class UpdateLearningRouteUseCaseTest {
                 .prerequisite("prerrequisito update")
                 .build();
 
+        when(learningRouteRepository.save(learningRoute)).thenReturn(Mono.just(learningRoute));
         when(learningRouteRepository.update("1", learningRouteUpdate)).thenReturn(Mono.just(learningRouteUpdate));
 
         StepVerifier.create(updateLearningRouteUseCase.apply("1", learningRouteUpdate))
