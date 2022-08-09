@@ -5,11 +5,11 @@ import co.com.sofka.model.course.gateways.CourseRepository;
 import co.com.sofka.mongo.helper.AdapterOperations;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Mono;
 
 @Repository
 public class MongoRepositoryAdapterCourse extends AdapterOperations<Course, CourseDocument, String, MongoDBRepositoryCourse>
- implements CourseRepository
-{
+        implements CourseRepository {
 
     public MongoRepositoryAdapterCourse(MongoDBRepositoryCourse repository, ObjectMapper mapper) {
         /**
@@ -18,5 +18,13 @@ public class MongoRepositoryAdapterCourse extends AdapterOperations<Course, Cour
          *  Or using mapper.map with the class of the object model
          */
         super(repository, mapper, d -> mapper.map(d, Course.class));
+    }
+
+    @Override
+    public Mono<Course> update(String id, Course course) {
+        course.setId(id);
+        return repository
+                .save(new CourseDocument(course.getId(), course.getName(), course.getDescription(), course.getApprovalValue()))
+                .flatMap(element -> Mono.just(course));
     }
 }

@@ -12,5 +12,7 @@ public interface CourseRepository {
 
     Mono<Course> findById(String id);
 
+    Mono<Course> update(String id, Course course);
+
     Mono<Void> deleteById(String id);
 }
