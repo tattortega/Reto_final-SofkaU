@@ -33,28 +33,27 @@ class UpdateCourseUseCaseTest {
         String courseDescription = "Desarrollo web con enfasis a JS";
         Integer approvalValues = 60;
         Course course1 = new Course("1", courseName, courseDescription, approvalValues);
-        Mono<Course> courseMono = Mono.just(course1);
+        Mono<Course> courseMono1 = Mono.just(course1);
 
         String courseNameUpdate = "Desarrollo web";
         String courseDescriptionUpdate = "Desarrollo web con enfasis a JS avanzado";
-        Integer approvalValuesUpdate = 60;
+        Integer approvalValuesUpdate = 75;
         Course course1Update = new Course("1", courseNameUpdate, courseDescriptionUpdate, approvalValuesUpdate);
+        Mono<Course> courseMono2 = Mono.just(course1Update);
 
-
-        when(courseRepository.save(Mockito.any(Course.class))).thenReturn(courseMono);
-        when(courseRepository.findById(course1.getId())).thenReturn(courseMono);
+        when(courseRepository.save(Mockito.any(Course.class))).thenReturn(courseMono1);
+        when(courseRepository.update(course1.getId(), course1Update)).thenReturn(courseMono2);
 
 
         StepVerifier.create(updateCourseUseCase.apply(course1.getId(), course1Update))
                 .expectNextMatches(course -> {
                     assert course.getId().equals("1");
                     assert course.getName().equals(courseNameUpdate);
-                    assert course.getDescription().equals(courseDescription);
-                    assert course.getApprovalValue().equals(approvalValues);
+                    assert course.getDescription().equals(courseDescriptionUpdate);
+                    assert course.getApprovalValue().equals(approvalValuesUpdate);
                     return true;
                 })
                 .verifyComplete();
 
-        verify(courseRepository).save(Mockito.any(Course.class));
     }
 }
