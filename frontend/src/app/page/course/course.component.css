@@ -1,0 +1,15 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+.input-container {
+  padding: 0.5rem;
+}
+.form-style {
+  width: 100%;
+}
+i {
+  cursor: pointer;
+}
+
+
+
