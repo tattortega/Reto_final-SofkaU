@@ -3,39 +3,16 @@
     <div class="container-fluid">
       <img
         src="https://ik.imagekit.io/lvh0tltbeph/SofkaU/logo-sofkau_1Fn3uH-1S.png?ik-sdk-version=javascript-1.4.3&updatedAt=1645658493330"
-        alt="" width="200" height="75">
+        alt="" width="200" height="75" />
     </div>
   </nav>
-  <br>
+  <br />
   <main>
-    <div class="container pt-4">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-          <div class="card text-center">
-            <div class="card-body">
-              <h2 style="text-align: center"> {{ title }} </h2>
-              <span *ngIf="submitted && createLearningRouteForm.invalid"></span>
-              <form class="mt-4" [formGroup]="createLearningRouteForm" (ngSubmit)="createEditLearningRoute()">
-                <div class="input-container">
-                  <label class="col-form-label">Nombre:</label>
-                  <input type="text" name="name" class="form-style" formControlName="name" #routeName>
-                </div>
-                <div class="input-container">
-                  <label class="col-form-label">Descripción:</label>
-                  <input type="text" name="description" class="form-style" formControlName="description">
-                </div>
-                <input type="submit" class="btn btn-primary m-auto" value="+">
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr>
-    <h2 style="text-align: center">...</h2>
     <div class="container mt-4 mb-4">
       <div class="card">
         <div class="card-body">
+          <span class="h3 align-text-top" style="text-align: center">Rutas de Aprendizaje</span>
+          <button class="btn btn-primary float-end" (click)="learningRouteForm()">Agregar</button>
           <table class="table table-bordered table-striped mt-2" style="text-align: center">
             <thead>
               <tr class="text-center">
@@ -55,9 +32,10 @@
                 <td>{{ route.course }}</td>
                 <td>{{ route.prerequisite }}</td>
                 <td>
-                  <i class="fas fa-edit fa-lg text-info" (click)="isUpdate(route)"></i>
-                  <i (click)="deleteLearningRoute(route.id)" class="fas fa-trash-alt fa-lg text-danger"
+                  <i class="fas fa-edit fa-lg text-info" (click)="handleEditClick(route)"></i>
+                  <i class="fas fa-trash-alt fa-lg text-danger" (click)="handleDeleteClick(route.id)"
                     style="margin-left: 1rem"></i>
+                  <i class="fa-light fa-grid-2-plus" style="margin-left: 1rem" (click)="handleAddCourses()"></i>
                 </td>
               </tr>
             </tbody>

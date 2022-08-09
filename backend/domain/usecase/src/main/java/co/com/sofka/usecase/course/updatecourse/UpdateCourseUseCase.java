@@ -14,13 +14,6 @@ public class UpdateCourseUseCase implements BiFunction<String, Course, Mono<Cour
 
     @Override
     public Mono<Course> apply(String id, Course course) {
-        return courseRepository.findById(id)
-                .switchIfEmpty(Mono.error(new Exception("No se encontró el curso")))
-                .map(course1 -> course1.toBuilder()
-                        .name(course.getName())
-                        .description(course.getDescription())
-                        .approvalValue(course.getApprovalValue())
-                        .build())
-                .flatMap(courseRepository::save);
+        return courseRepository.update(id, course);
     }
 }

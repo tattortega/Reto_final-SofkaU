@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{createMode ? 'Creación de curso' : 'Edición de curso'}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="createLearningRouteForm" (ngSubmit)="saveLearningRoute()">
+    <div class="form-group">
+      <label for="name" class="col-form-label">Nombre</label>
+      <input type="text" id="name" name="name" class="form-control" formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-form-label">Descripción</label>
+      <textarea id="description" name="description" class="form-control"
+                formControlName="description"></textarea>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancelar</button>
+  <button class="btn btn-primary" (click)="saveLearningRoute()" [disabled]="createLearningRouteForm.invalid">Guardar</button>
+</div>
