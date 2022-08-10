@@ -1,0 +1,44 @@
+<app-nav></app-nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 d-md-block bg-light sidebar">
+      <app-menu></app-menu>
+    </div>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="inner-adjust">
+
+        <div class="card">
+          <div class="card-body">
+            <span class="h3 align-text-top" style="text-align: center">CURSOS</span>
+            <button class="btn btn-primary float-end" (click)="courseForm()">Agregar</button>
+            <table class="table table-bordered table-striped mt-2" style="text-align: center">
+              <thead>
+                <tr class="text-center">
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Valor de aprobación</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let course of courses">
+                  <td>{{ course.name}}</td>
+                  <td>{{ course.description}}</td>
+                  <td>{{ course.approvalValue}} %</td>
+                  <td>
+                    <i class="fas fa-edit fa-lg text-info" (click)="handleEditClick(course)"></i>
+                    <i (click)="handleDeleteClick(course.id)" class="fas fa-trash-alt fa-lg text-danger"
+                      style="margin-left: 1rem"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+</div>

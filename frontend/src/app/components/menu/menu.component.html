@@ -1,0 +1,32 @@
+<nav >
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/dashboard">
+                    <i class="fas fa-user"></i>Usuario
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/course">
+                    <i class="fas fa-book"></i>Curso
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/ruta">
+                    <i class="fas fa-route"></i>Rutas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/training">
+                    <i class="fas fa-graduation-cap"></i>Training
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="authService.SignOut()">
+                    <i class="fas fa-sign-out-alt"></i>Log out
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
