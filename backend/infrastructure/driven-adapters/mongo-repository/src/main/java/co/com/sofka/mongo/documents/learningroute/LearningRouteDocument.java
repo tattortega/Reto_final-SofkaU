@@ -1,19 +1,23 @@
-package co.com.sofka.mongo.course;
+package co.com.sofka.mongo.documents.learningroute;
 
+import co.com.sofka.model.course.Course;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(value = "courses")
-public class CourseDocument {
+public class LearningRouteDocument {
+
     @Id
     private String id;
     private String name;
     private String description;
-    private Integer approvalValue;
+    private Integer level;
+    private Course course;
+    private String prerequisite;
 }

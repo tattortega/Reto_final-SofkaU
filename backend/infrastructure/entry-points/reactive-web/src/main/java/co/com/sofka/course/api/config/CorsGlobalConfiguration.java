@@ -1,4 +1,4 @@
-package co.com.sofka.api.course.config;
+package co.com.sofka.course.api.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.config.CorsRegistry;

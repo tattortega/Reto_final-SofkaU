@@ -22,7 +22,7 @@ import { SignInComponent } from './page/sign-in/sign-in.component';
 import { ProfileComponent } from './page/profile/profile.component';
 import { CourseFormComponent } from './page/course/course-form/course-form.component';
 import {CourseComponent} from './page/course/course.component';
-
+import {LearningRouteComponent} from './page/learning-route/learning-route.component';
 
 // routing
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     MenuComponent,
     NavComponent,
+    LearningRouteComponent,
     SignInComponent,
     ProfileComponent,
     CourseFormComponent,

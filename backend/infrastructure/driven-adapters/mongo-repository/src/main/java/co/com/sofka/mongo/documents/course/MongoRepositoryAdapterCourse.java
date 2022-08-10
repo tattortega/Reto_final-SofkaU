@@ -1,4 +1,4 @@
-package co.com.sofka.mongo.course;
+package co.com.sofka.mongo.documents.course;
 
 import co.com.sofka.model.course.Course;
 import co.com.sofka.model.course.gateways.CourseRepository;

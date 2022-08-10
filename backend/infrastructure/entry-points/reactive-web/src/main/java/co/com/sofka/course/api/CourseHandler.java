@@ -1,4 +1,4 @@
-package co.com.sofka.api.course;
+package co.com.sofka.course.api;
 
 import co.com.sofka.model.course.Course;
 import co.com.sofka.usecase.course.createcourse.CreateCourseUseCase;
