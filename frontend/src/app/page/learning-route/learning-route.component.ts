@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { LearningRouteService } from '../../services/learning-route/learning-route.service';
-import { LearningRoute } from '../../interfaces/learning-route';
+import { LearningRouteService } from '../../shared/services/learning-route/learning-route.service';
+import { LearningRoute } from '../../shared/interfaces/learning-route';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LearningRouteFormComponent } from '../modal/learning-route-form/learning-route-form.component';
-import { Course } from 'src/app/interfaces/course';
+//import { LearningRouteFormComponent } from '../modal/learning-route-form/learning-route-form.component';
 
 @Component({
   selector: 'app-learning-route',
@@ -36,23 +35,23 @@ export class LearningRouteComponent implements OnInit {
   }
 
   learningRouteForm() {
-    const modal = this.modal.open(LearningRouteFormComponent);
+  /*  const modal = this.modal.open(LearningRouteFormComponent);
     modal.result.then(
       this.handleModalLearningRouteFormClose.bind(this),
       this.handleModalLearningRouteFormClose.bind(this)
-    );
+    );*/
   }
 
   handleModalLearningRouteFormClose() {}
 
   handleEditClick(route: LearningRoute) {
-    const modal = this.modal.open(LearningRouteFormComponent);
+   /* const modal = this.modal.open(LearningRouteFormComponent);
     modal.result.then(
       this.handleModalLearningRouteFormClose.bind(this),
       this.handleModalLearningRouteFormClose.bind(this)
     )
     modal.componentInstance.createMode = false;
-    modal.componentInstance.routes = route;
+    modal.componentInstance.routes = route;*/
   }
 
   handleDeleteClick(id: string, ) {

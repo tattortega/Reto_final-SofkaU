@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {CourseService} from "../../services/course/course.service";
-import {Course} from "../../interfaces/course";
+import {CourseService} from "../../shared/services/course/course.service";
+import {Course} from "../../shared/interfaces/course";
 import {ToastrService} from "ngx-toastr";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {CourseFormComponent} from "../modal/course-form/course-form.component";
+import {CourseFormComponent} from "./course-form/course-form.component";
 
 @Component({
   selector: 'app-course',
