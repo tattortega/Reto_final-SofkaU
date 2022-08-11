@@ -20,7 +20,7 @@ public class LearningRouteRepositoryAdapter extends AdapterOperations<LearningRo
     public Mono<LearningRoute> update(String id, LearningRoute learningRoute) {
         learningRoute.setId(id);
         return repository
-                .save(new LearningRouteDocument(learningRoute.getId(), learningRoute.getName(), learningRoute.getDescription(), learningRoute.getLevel(), learningRoute.getCourse(), learningRoute.getPrerequisite()))
+                .save(new LearningRouteDocument(learningRoute.getId(), learningRoute.getName(), learningRoute.getDescription(), learningRoute.getRoutes()))
                 .flatMap(element -> Mono.just(learningRoute));
     }
 }

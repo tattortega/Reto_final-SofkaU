@@ -15,7 +15,7 @@ public class RouterRestRutaAprendizaje {
         return route(POST("/api/ruta"), learningRouteHandler::createLearningRoute)
                 .andRoute(GET("/api/ruta"), learningRouteHandler::getAllLearningRoute)
                 .andRoute(GET("/api/ruta/{id}"), learningRouteHandler::getLearningRoute)
-                .andRoute(POST("/api/ruta/{id}"), learningRouteHandler::updateLearningRoute)
+                .andRoute(PUT("/api/ruta/{id}"), learningRouteHandler::updateLearningRoute)
                 .andRoute(DELETE("/api/ruta/{id}"), learningRouteHandler::deleteLearningRoute);
     }
 }
