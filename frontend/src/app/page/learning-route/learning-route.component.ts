@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { LearningRouteService } from '../../services/learning-route/learning-route.service';
-import { LearningRoute, Route } from '../../interfaces/learning-route';
+import { LearningRouteFormComponent } from './learning-route-form/learning-route-form.component';
+import { AddCourseToRouteComponent } from './add-course-to-route/add-course-to-route.component';
+import { LearningRouteService } from 'src/app/shared/services/learning-route/learning-route.service';
+import { LearningRoute, Route } from '../../shared/interfaces/learning-route';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LearningRouteFormComponent } from '../modal/learning-route-form/learning-route-form.component';
-import { AddCourseToRouteComponent } from '../modal/add-course-to-route/add-course-to-route.component';
+//import { LearningRouteFormComponent } from '../modal/learning-route-form/learning-route-form.component';
 
 @Component({
   selector: 'app-learning-route',
@@ -35,7 +36,6 @@ export class LearningRouteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLearningRoutes();
-    this.prueba();
   }
 
   handleModalLearningRouteFormClose() {}
@@ -43,11 +43,11 @@ export class LearningRouteComponent implements OnInit {
   modalAddCourseToRouteFormClose() {}
 
   learningRouteForm() {
-    const modal = this.modal.open(LearningRouteFormComponent);
+  /*  const modal = this.modal.open(LearningRouteFormComponent);
     modal.result.then(
       this.handleModalLearningRouteFormClose.bind(this),
       this.handleModalLearningRouteFormClose.bind(this)
-    );
+    );*/
   }
 
   addCourseToRouteForm() {
@@ -59,13 +59,13 @@ export class LearningRouteComponent implements OnInit {
   }
 
   handleEditClick(route: LearningRoute) {
-    const modal = this.modal.open(LearningRouteFormComponent);
+   /* const modal = this.modal.open(LearningRouteFormComponent);
     modal.result.then(
       this.handleModalLearningRouteFormClose.bind(this),
       this.handleModalLearningRouteFormClose.bind(this)
     )
     modal.componentInstance.createMode = false;
-    modal.componentInstance.routes = route;
+    modal.componentInstance.routes = route;*/
   }
 
   handleDeleteClick(id: string, ) {
@@ -103,16 +103,5 @@ export class LearningRouteComponent implements OnInit {
 
   public getKeyByPosition(obj: any,position=0): any{
     return Object.keys(obj)[position];
-  }
-
-  prueba() {
-    this.routes.forEach(element => {
-      var options = element.routes
-      options.forEach(element => {
-        console.log(".....")
-        console.log(options.values.toString)
-      });
-    });
-
   }
 }

@@ -1,39 +1,72 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LearningRouteComponent } from './components/learning-route/learning-route.component';
-import { CourseComponent } from './components/course/course.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CourseFormComponent } from './components/modal/course-form/course-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LearningRouteFormComponent } from './components/modal/learning-route-form/learning-route-form.component';
-import { AddCourseToRouteComponent } from './components/modal/add-course-to-route/add-course-to-route.component';
+import { LearningRouteFormComponent } from './page/learning-route/learning-route-form/learning-route-form.component';
+import { AddCourseToRouteComponent } from './page/learning-route/add-course-to-route/add-course-to-route.component';
+import {ToastrModule} from 'ngx-toastr';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
+import { environment } from '../environments/environment';
+
+import { MenuComponent } from './components/menu/menu.component';
+import { NavComponent } from './components/nav/nav.component';
+
+// page
+import { SignInComponent } from './page/sign-in/sign-in.component';
+import { ProfileComponent } from './page/profile/profile.component';
+import { CourseFormComponent } from './page/course/course-form/course-form.component';
+import {CourseComponent} from './page/course/course.component';
+import {LearningRouteComponent} from './page/learning-route/learning-route.component';
+
+// routing
+import { AppRoutingModule } from './app-routing.module';
+
+// service
+import { AuthService } from './shared/services/auth.service';
+import { CourseService } from './shared/services/course/course.service';
+
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MenuComponent,
+    NavComponent,
     LearningRouteComponent,
-    CourseComponent,
+    SignInComponent,
+    ProfileComponent,
     CourseFormComponent,
     LearningRouteFormComponent,
     AddCourseToRouteComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    FormsModule,
     ReactiveFormsModule,
-    NgbModule,
-  ],
-  providers: [],
+    ToastrModule.forRoot(),
+    NgbModule
+    ],
+  providers: [AuthService, CourseService],
   bootstrap: [AppComponent],
-  entryComponents: [CourseFormComponent],
 })
+
 export class AppModule {}

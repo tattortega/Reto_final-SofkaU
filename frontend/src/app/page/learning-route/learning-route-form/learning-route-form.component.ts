@@ -1,20 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { LearningRouteService } from 'src/app/services/learning-route/learning-route.service';
+import { LearningRouteService } from 'src/app/shared/services/learning-route/learning-route.service';
 import { ToastrService } from 'ngx-toastr';
-import { LearningRoute } from '../../../interfaces/learning-route';
-import { CourseService } from 'src/app/services/course/course.service';
-import { Course } from 'src/app/interfaces/course';
+import { LearningRoute } from 'src/app/shared/interfaces/learning-route';
 
 @Component({
-  selector: 'app-add-course-to-route',
-  templateUrl: './add-course-to-route.component.html',
-  styleUrls: ['./add-course-to-route.component.css']
+  selector: 'app-learning-route-form',
+  templateUrl: './learning-route-form.component.html',
+  styleUrls: ['./learning-route-form.component.css'],
 })
-export class AddCourseToRouteComponent implements OnInit {
+export class LearningRouteFormComponent implements OnInit {
   routes: LearningRoute | undefined;
-  courses: Course[] | undefined;
   createLearningRouteForm: FormGroup;
   createMode: boolean = true;
 
@@ -22,7 +19,6 @@ export class AddCourseToRouteComponent implements OnInit {
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
     private learningRouteService: LearningRouteService,
-    private courseService: CourseService,
     private toastr: ToastrService
   ) {
     this.createLearningRouteForm = this.formBuilder.group({
@@ -35,13 +31,6 @@ export class AddCourseToRouteComponent implements OnInit {
     if (!this.createMode) {
       this.loadLearningRoute(this.routes);
     }
-    this.getCourses();
-  }
-
-  getCourses(): void {
-    this.courseService.getAllCourse().subscribe(course => {
-      this.courses = course;
-    })
   }
 
   loadLearningRoute(route: LearningRoute | undefined) {
@@ -111,4 +100,3 @@ export class AddCourseToRouteComponent implements OnInit {
     this.activeModal.dismiss({ route: learningRoute, createMode: false });
   }
 }
-
