@@ -18,7 +18,7 @@ plugins {
 
 heroku {
   appName = "academic-sofkau"
-  includes = ["applications/app-service/build/libs/reto-final.jar"]
+  includes = ["./applications/app-service/build/libs/reto-final.jar"]
   includeBuildDir = false
   jdkVersion = 11
    processTypes(
