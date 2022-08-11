@@ -19,13 +19,13 @@
     <div>
       <select class="form-select" aria-label="Default select example">
         <option selected >Curso</option>
-        <option value="course.name" *ngFor="let course of courses">{{course.name}}</option>
+        <option value="course.id" *ngFor="let course of courses">{{course.name}}</option>
       </select>
     </div>
     <div>
       <select class="form-select" aria-label="Default select example">
         <option selected >Prerrequesito</option>
-        <option value="1">1</option>
+        <option value="course.id" *ngFor="let course of courses">{{course.name}}</option>
       </select>
     </div>
   </form>

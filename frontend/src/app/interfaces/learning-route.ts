@@ -4,7 +4,11 @@ export interface LearningRoute {
   id: string;
   name: string;
   description: string;
+  routes: Array<Route>[]
+}
+
+export interface Route {
   level: number;
-  course: Course;
-  prerequisite: string;
+  courseId: Course;
+  precourseId: Course;
 }

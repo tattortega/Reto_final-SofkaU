@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LearningRouteService } from '../../services/learning-route/learning-route.service';
-import { LearningRoute } from '../../interfaces/learning-route';
+import { LearningRoute, Route } from '../../interfaces/learning-route';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LearningRouteFormComponent } from '../modal/learning-route-form/learning-route-form.component';
-import { Course } from 'src/app/interfaces/course';
+import { AddCourseToRouteComponent } from '../modal/add-course-to-route/add-course-to-route.component';
 
 @Component({
   selector: 'app-learning-route',
@@ -14,7 +14,8 @@ import { Course } from 'src/app/interfaces/course';
 })
 export class LearningRouteComponent implements OnInit {
 
-  routes: LearningRoute[] | undefined;
+  routes: LearningRoute[] = [];
+  routess: Route[] | undefined;
   createLearningRouteForm: FormGroup;
   submitted = false;
   id: string | undefined;
@@ -23,6 +24,7 @@ export class LearningRouteComponent implements OnInit {
     private learningRouteService: LearningRouteService,
     private toastr: ToastrService,
     private modal: NgbModal,
+    private modalAdd: NgbModal,
     private formBuilder: FormBuilder
   ) {
     this.createLearningRouteForm = this.formBuilder.group({
@@ -33,7 +35,12 @@ export class LearningRouteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLearningRoutes();
+    this.prueba();
   }
+
+  handleModalLearningRouteFormClose() {}
+
+  modalAddCourseToRouteFormClose() {}
 
   learningRouteForm() {
     const modal = this.modal.open(LearningRouteFormComponent);
@@ -43,7 +50,13 @@ export class LearningRouteComponent implements OnInit {
     );
   }
 
-  handleModalLearningRouteFormClose() {}
+  addCourseToRouteForm() {
+    const modalAdd = this.modalAdd.open(AddCourseToRouteComponent);
+    modalAdd.result.then(
+        this.modalAddCourseToRouteFormClose.bind(this),
+        this.modalAddCourseToRouteFormClose.bind(this)
+      );
+  }
 
   handleEditClick(route: LearningRoute) {
     const modal = this.modal.open(LearningRouteFormComponent);
@@ -72,19 +85,34 @@ export class LearningRouteComponent implements OnInit {
     });
   }
 
-  handleAddCourses() {
-    this.toastr.warning(
-      'Se agregó con éxito!',
-      'Curso Agregado',
-      {
-        positionClass: 'toast-bottom-right',
-      }
-    );
-  }
+  // handleAddCourses() {
+  //   const modal = this.modal.open(AddCourseFormComponent);
+  //   modal.result.then(
+  //     this.handleModalLearningRouteFormClose.bind(this),
+  //     this.handleModalLearningRouteFormClose.bind(this)
+  //   );
+  // }
 
   getLearningRoutes(): void {
     this.learningRouteService.getAllLearningRoute().subscribe(route => {
-      this.routes = route;
+      console.log(this.routes = route);
+      console.log("----->")
+      console.log(this.routess = route.routes);
     });
+  }
+
+  public getKeyByPosition(obj: any,position=0): any{
+    return Object.keys(obj)[position];
+  }
+
+  prueba() {
+    this.routes.forEach(element => {
+      var options = element.routes
+      options.forEach(element => {
+        console.log(".....")
+        console.log(options.values.toString)
+      });
+    });
+
   }
 }

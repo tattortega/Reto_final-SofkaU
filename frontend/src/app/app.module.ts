@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CourseFormComponent } from './components/modal/course-form/course-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LearningRouteFormComponent } from './components/modal/learning-route-form/learning-route-form.component';
+import { AddCourseToRouteComponent } from './components/modal/add-course-to-route/add-course-to-route.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LearningRouteFormComponent } from './components/modal/learning-route-fo
     CourseComponent,
     CourseFormComponent,
     LearningRouteFormComponent,
+    AddCourseToRouteComponent,
   ],
   imports: [
     BrowserModule,
