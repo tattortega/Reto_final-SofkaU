@@ -1,4 +1,4 @@
-package co.com.sofka.usecase.addcoursetoroute;
+package co.com.sofka.usecase.route.addcoursetoroute;
 
 import co.com.sofka.model.course.Course;
 import co.com.sofka.model.course.gateways.CourseRepository;
@@ -19,15 +19,15 @@ public class AddCourseToRouteUseCase {
     private final LearningRouteRepository learningRouteRepository;
     private final CreateCourseUseCase createCourseUseCase;
 
-//    public Mono<Course> addCourseToRoute(String learningRouteId, String courseId) {
-//        return learningRouteRepository.findById(learningRouteId)
-//                .flatMap(route -> {
-//                    return createCourseUseCase.apply()
-//                            .map(course -> {
-//                                route.setRoutes((List<Route>) course);
-//                                return route;
-//                            });
-//                })
-//                .flatMap(learningRouteRepository::save);
-//    }
+    public Mono<Course> addCourseToRoute(String learningRouteId, Integer level, String courseId) {
+        return learningRouteRepository.findById(learningRouteId)
+                .flatMap(route -> {
+                    return createCourseUseCase.apply()
+                            .map(course -> {
+                                route.setRoutes((List<Route>) course);
+                                return route;
+                            });
+                })
+                .flatMap(learningRouteRepository::save);
+    }
 }

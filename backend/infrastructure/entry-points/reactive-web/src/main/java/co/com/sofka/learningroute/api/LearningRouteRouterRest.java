@@ -9,7 +9,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 @Configuration
-public class RouterRestRutaAprendizaje {
+public class LearningRouteRouterRest {
     @Bean
     public RouterFunction<ServerResponse> routerFunctionRutaAprendizaje(LearningRouteHandler learningRouteHandler) {
         return route(POST("/api/ruta"), learningRouteHandler::createLearningRoute)
