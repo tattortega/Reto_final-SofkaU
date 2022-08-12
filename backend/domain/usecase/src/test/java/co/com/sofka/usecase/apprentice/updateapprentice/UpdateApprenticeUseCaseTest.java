@@ -1,4 +1,4 @@
-package co.com.sofka.usecase.apprentice.createapprentice;
+package co.com.sofka.usecase.apprentice.updateapprentice;
 
 import co.com.sofka.model.apprentice.Apprentice;
 import co.com.sofka.model.apprentice.gateways.ApprenticeRepository;
@@ -7,17 +7,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import static org.mockito.Mockito.when;
 
-class CreateApprenticeUseCaseTest {
+class UpdateApprenticeUseCaseTest {
 
     @InjectMocks
-    CreateApprenticeUseCase createApprenticeUseCase;
+    UpdateApprenticeUseCase updateApprenticeUseCase;
 
     @Mock
     ApprenticeRepository apprenticeRepository;
@@ -28,8 +27,7 @@ class CreateApprenticeUseCaseTest {
     }
 
     @Test
-    void createApprenticeTest() {
-
+    void updateApprenticeTest() {
         Apprentice apprentice = Apprentice.builder()
                 .id("1")
                 .name("nombre")
@@ -42,16 +40,29 @@ class CreateApprenticeUseCaseTest {
                 .bilingual(true)
                 .build();
 
-        when(apprenticeRepository.save(Mockito.any(Apprentice.class))).thenReturn(Mono.just(apprentice));
+        Apprentice apprenticeUpdate = Apprentice.builder()
+                .id("1")
+                .name("nombre update")
+                .lastname("lastname update")
+                .city("city update")
+                .gender("gender update")
+                .email("email update")
+                .phoneNumber(1234)
+                .photo("photo.png")
+                .bilingual(true)
+                .build();
 
-        StepVerifier.create(createApprenticeUseCase.apply(apprentice))
+        when(apprenticeRepository.save(apprentice)).thenReturn(Mono.just(apprentice));
+        when(apprenticeRepository.update("1", apprenticeUpdate)).thenReturn(Mono.just(apprenticeUpdate));
+
+        StepVerifier.create(updateApprenticeUseCase.apply("1", apprenticeUpdate))
                 .assertNext(apprentice1 -> {
                     Assertions.assertEquals("1", apprentice1.getId());
-                    Assertions.assertEquals("nombre", apprentice1.getName());
-                    Assertions.assertEquals("lastname", apprentice1.getLastname());
-                    Assertions.assertEquals("city", apprentice1.getCity());
-                    Assertions.assertEquals("gender", apprentice1.getGender());
-                    Assertions.assertEquals("email", apprentice1.getEmail());
+                    Assertions.assertEquals("nombre update", apprentice1.getName());
+                    Assertions.assertEquals("lastname update", apprentice1.getLastname());
+                    Assertions.assertEquals("city update", apprentice1.getCity());
+                    Assertions.assertEquals("gender update", apprentice1.getGender());
+                    Assertions.assertEquals("email update", apprentice1.getEmail());
                     Assertions.assertEquals(1234, apprentice1.getPhoneNumber());
                     Assertions.assertEquals("photo.png", apprentice1.getPhoto());
                     Assertions.assertEquals(true, apprentice1.getBilingual());

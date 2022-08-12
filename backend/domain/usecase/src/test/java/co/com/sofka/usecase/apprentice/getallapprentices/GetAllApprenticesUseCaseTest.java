@@ -1,4 +1,4 @@
-package co.com.sofka.usecase.apprentice.deleteapprentice;
+package co.com.sofka.usecase.apprentice.getallapprentices;
 
 import co.com.sofka.model.apprentice.Apprentice;
 import co.com.sofka.model.apprentice.gateways.ApprenticeRepository;
@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 import static org.mockito.Mockito.when;
 
-class DeleteApprenticeUseCaseTest {
+class GetAllApprenticesUseCaseTest {
 
     @InjectMocks
-    DeleteApprenticeUseCase deleteApprenticeUseCase;
+    GetAllApprenticesUseCase getAllApprenticesUseCase;
 
     @Mock
     ApprenticeRepository apprenticeRepository;
@@ -26,8 +26,8 @@ class DeleteApprenticeUseCaseTest {
     }
 
     @Test
-    void deleteApprenticeTest() {
-        Apprentice apprentice = Apprentice.builder()
+    void getAllApprenticesTest() {
+        Apprentice apprentice1 = Apprentice.builder()
                 .id("1")
                 .name("nombre")
                 .lastname("lastname")
@@ -39,11 +39,26 @@ class DeleteApprenticeUseCaseTest {
                 .bilingual(true)
                 .build();
 
-        when(apprenticeRepository.findById("1")).thenReturn(Mono.just(apprentice));
-        when(apprenticeRepository.deleteById("1")).thenReturn(Mono.empty());
+        Apprentice apprentice2 = Apprentice.builder()
+                .id("2")
+                .name("nombre2")
+                .lastname("lastname")
+                .city("city")
+                .gender("gender")
+                .email("email")
+                .phoneNumber(1234)
+                .photo("photo.png")
+                .bilingual(true)
+                .build();
 
-        StepVerifier.create(deleteApprenticeUseCase.apply("1"))
+        Flux<Apprentice> apprenticeFlux = Flux.just(apprentice1, apprentice2);
+
+        when(apprenticeRepository.findAll()).thenReturn(apprenticeFlux);
+
+        StepVerifier.create(getAllApprenticesUseCase.get())
+                .expectNextCount(2)
                 .expectComplete()
                 .verify();
+
     }
 }
