@@ -15,7 +15,6 @@ export class CourseComponent implements OnInit {
 
   courses: Course[] | undefined;
   createCourseForm: FormGroup;
-  submitted = false
   id: string | undefined
 
   constructor(

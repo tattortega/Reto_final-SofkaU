@@ -36,19 +36,23 @@ import { CourseService } from './shared/services/course/course.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { TrainingComponent } from './page/training/training.component';
+import { TrainingFormComponent } from './page/training/training-form/training-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     NavComponent,
-    LearningRouteComponent,
     SignInComponent,
     ProfileComponent,
-    CourseFormComponent,
+    LearningRouteComponent,
     LearningRouteFormComponent,
     AddCourseToRouteComponent,
-    CourseComponent
+    CourseComponent,
+    CourseFormComponent,
+    TrainingComponent,
+    TrainingFormComponent
   ],
   imports: [
     BrowserModule,
