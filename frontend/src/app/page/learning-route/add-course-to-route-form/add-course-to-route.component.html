@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">{{createMode ? 'Creación de curso' : 'Edición de curso'}}</h4>
+  <h4 class="modal-title">{{createMode ? 'Creación de rutas' : 'Edición de rutas'}}</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -16,12 +16,14 @@
         <option value="5">5</option>
       </select>
     </div>
+    <br>
     <div>
       <select class="form-select" aria-label="Default select example">
         <option selected >Curso</option>
         <option value="course.id" *ngFor="let course of courses">{{course.name}}</option>
       </select>
     </div>
+    <br>
     <div>
       <select class="form-select" aria-label="Default select example">
         <option selected >Prerrequesito</option>

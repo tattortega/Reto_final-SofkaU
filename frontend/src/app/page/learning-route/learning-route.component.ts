@@ -15,7 +15,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class LearningRouteComponent implements OnInit {
 
   routes: LearningRoute[] = [];
-  routess: Route[] | undefined;
+  routesArreglo: Route[] = [];
   createLearningRouteForm: FormGroup;
   submitted = false;
   id: string | undefined;
@@ -94,9 +94,16 @@ export class LearningRouteComponent implements OnInit {
 
   getLearningRoutes(): void {
     this.learningRouteService.getAllLearningRoute().subscribe(route => {
-      console.log(this.routes = route);
       console.log("----->")
-      console.log(this.routess = route.routes);
+      console.log(this.routes = route);
+      this.routes.forEach(ruta => {
+
+        ruta.routes.forEach(level =>  {
+
+          console.log( level.courseId)
+          console.log("Texto" + this.routesArreglo.push(level))
+        })
+      })
     });
   }
 

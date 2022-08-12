@@ -4,7 +4,7 @@ export interface LearningRoute {
   id: string;
   name: string;
   description: string;
-  routes: Array<Route>[]
+  routes: Route[]
 }
 
 export interface Route {
