@@ -8,6 +8,14 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Se crea el modelo de LearningRoute con sus atributos.
+ *
+ * @author Ricardo Ortega <tattortega.28@gmail.com>
+ * @author Santiago Ospina <santiago.m200@outlook.es>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor

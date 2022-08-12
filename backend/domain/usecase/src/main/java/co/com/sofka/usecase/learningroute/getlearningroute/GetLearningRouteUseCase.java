@@ -7,6 +7,13 @@ import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
 
+/**
+ * Caso de uso GetLearningRoute
+ *
+ * @author Santiago Ospina <santiago.m200@outlook.es>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @RequiredArgsConstructor
 public class GetLearningRouteUseCase implements Function<String, Mono<LearningRoute>> {
 

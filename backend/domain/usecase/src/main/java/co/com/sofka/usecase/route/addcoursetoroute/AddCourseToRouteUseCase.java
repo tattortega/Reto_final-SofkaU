@@ -1,4 +1,4 @@
-package co.com.sofka.usecase.addcoursetoroute;
+package co.com.sofka.usecase.route.addcoursetoroute;
 
 import co.com.sofka.model.course.Course;
 import co.com.sofka.model.course.gateways.CourseRepository;
