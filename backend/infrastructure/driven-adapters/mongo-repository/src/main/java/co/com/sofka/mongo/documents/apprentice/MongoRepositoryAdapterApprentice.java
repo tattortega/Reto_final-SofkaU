@@ -7,6 +7,14 @@ import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
+/**
+ * Repositorio para implementar metodos en mongo
+ *
+ * @author Ricardo Ortega <tattortega.28@gmail.com>
+ * @author Santiago Ospina <santiago.m200@outlook.es>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @Repository
 public class MongoRepositoryAdapterApprentice extends AdapterOperations<Apprentice, ApprenticeDocument, String, MongoDBRepositoryApprentice>
         implements ApprenticeRepository {

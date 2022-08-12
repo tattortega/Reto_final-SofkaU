@@ -8,11 +8,21 @@ import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
 
+/**
+ * Caso de uso crear training
+ * @author Ricardo Ortega <tattortega.28@gmail.com>
+ * @author Santiago Ospina <santiago.m200@outlook.es>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @RequiredArgsConstructor
 public class CreateTrainingUseCase implements Function<Training, Mono<Training>> {
 
@@ -25,7 +35,7 @@ public class CreateTrainingUseCase implements Function<Training, Mono<Training>>
             String[] vector;
             String lines = "";
             int nLines = 0;
-            FileReader fileReader = new FileReader("C:\\prueba.txt");
+            FileReader fileReader = new FileReader((File) training.getApprentices());
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             int i = 0;
             while (bufferedReader.readLine() != null) {
@@ -51,6 +61,7 @@ public class CreateTrainingUseCase implements Function<Training, Mono<Training>>
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+//        Training training1 = new Training(training.getId(), training.getName(), training.getApprentices())
         return trainingRepository.save(training);
     }
 }

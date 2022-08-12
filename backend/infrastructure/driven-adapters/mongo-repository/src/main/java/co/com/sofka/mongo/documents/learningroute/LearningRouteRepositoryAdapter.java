@@ -10,6 +10,13 @@ import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 
+/**
+ * Repositorio para implementar metodos en mongo
+ *
+ * @author Santiago Ospina <santiago.m200@outlook.es>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @Repository
 public class LearningRouteRepositoryAdapter extends AdapterOperations<LearningRoute, LearningRouteDocument, String, LearningRouteMongoDBRepository>
         implements LearningRouteRepository {

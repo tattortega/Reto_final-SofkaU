@@ -7,6 +7,13 @@ import reactor.core.publisher.Mono;
 
 import java.util.function.BiFunction;
 
+/**
+ * Caso de uso UpdateLearningRoute
+ *
+ * @author Santiago Ospina <santiago.m200@outlook.es>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @RequiredArgsConstructor
 public class UpdateLearningRouteUseCase implements BiFunction<String, LearningRoute, Mono<LearningRoute>> {
 

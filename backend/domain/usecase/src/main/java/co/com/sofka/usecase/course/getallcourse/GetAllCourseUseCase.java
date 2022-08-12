@@ -7,6 +7,12 @@ import reactor.core.publisher.Flux;
 
 import java.util.function.Supplier;
 
+/**
+ * Caso de uso obtener todos los cursos
+ * @author Ricardo Ortega <tattortega.28@gmail.com>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @RequiredArgsConstructor
 public class GetAllCourseUseCase implements Supplier<Flux<Course>> {
 

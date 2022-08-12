@@ -7,6 +7,12 @@ import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
+/**
+ * Repositorio para implementar metodos en mongo
+ * @author Ricardo Ortega <tattortega.28@gmail.com>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @Repository
 public class MongoRepositoryAdapterCourse extends AdapterOperations<Course, CourseDocument, String, MongoDBRepositoryCourse>
         implements CourseRepository {

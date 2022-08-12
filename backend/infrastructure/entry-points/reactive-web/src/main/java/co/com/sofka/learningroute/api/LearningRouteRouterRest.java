@@ -8,6 +8,13 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
+/**
+ * Rutas para LearningRoute
+ *
+ * @author Santiago Ospina <santiago.m200@outlook.es>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @Configuration
 public class LearningRouteRouterRest {
     @Bean
