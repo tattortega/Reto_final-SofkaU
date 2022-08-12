@@ -16,6 +16,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+/**
+ * Caso de uso crear training
+ * @author Ricardo Ortega <tattortega.28@gmail.com>
+ * @author Santiago Ospina <santiago.m200@outlook.es>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @RequiredArgsConstructor
 public class CreateTrainingUseCase implements Function<Training, Mono<Training>> {
 

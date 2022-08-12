@@ -1,6 +1,7 @@
 package co.com.sofka.mongo.documents.training;
 
 import co.com.sofka.model.apprentice.Apprentice;
+import co.com.sofka.model.learningroute.LearningRoute;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Documento training
+ * @author Ricardo Ortega <tattortega.28@gmail.com>
+ * @author Santiago Ospina <santiago.m200@outlook.es>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,6 +30,6 @@ public class TrainingDocument {
     private LocalDate startDate;
     private LocalDate endDate;
     private String coach;
-    private String routeLearning;
+    private LearningRoute learningRoute;
     private List<Apprentice> apprentices;
 }
