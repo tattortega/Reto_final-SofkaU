@@ -34,6 +34,8 @@ import { CourseService } from './shared/services/course/course.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { TrainingComponent } from './page/training/training.component';
+import { TrainingFormComponent } from './page/training/training-form/training-form.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { HttpClientModule } from '@angular/common/http';
     SignInComponent,
     ProfileComponent,
     CourseFormComponent,
-    CourseComponent
+    CourseComponent,
+    TrainingComponent,
+    TrainingFormComponent
   ],
   imports: [
     BrowserModule,

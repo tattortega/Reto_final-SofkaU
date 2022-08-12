@@ -7,13 +7,15 @@ import { LearningRouteComponent } from './page/learning-route/learning-route.com
 
 // route guard
 import { AuthGuard } from './shared/guard/auth.guard';
+import {TrainingComponent} from "./page/training/training.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
   { path: 'dashboard', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'course', component: CourseComponent, canActivate: [AuthGuard] },
-  { path: 'learning-route', component: LearningRouteComponent },
+  { path: 'learning-route', component: LearningRouteComponent, canActivate: [AuthGuard] },
+  { path: 'training', component: TrainingComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
