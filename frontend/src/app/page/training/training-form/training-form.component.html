@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{createMode ? 'Creación de training' : 'Edición de training'}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="createTrainingForm" (ngSubmit)="saveTraining()">
+    <div class="form-group">
+      <label for="name" class="col-form-label">Nombre</label>
+      <input type="text" id="name" name="name" class="form-control" formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-form-label">Descripción</label>
+      <textarea id="description" name="description" class="form-control"
+                formControlName="description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="startDate" class="col-form-label">Fecha de inicio</label>
+      <input type="date" id="startDate" name="startDate" class="form-control" formControlName="startDate">
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="col-form-label">Fecha de finalización</label>
+      <input type="date" id="endDate" name="endDate" class="form-control" formControlName="endDate">
+    </div>
+    <div class="form-group">
+      <label class="col-form-label">Coach encargado</label>
+      <select class="custom-select mb-3" (change)="changeCoach($event)" formControlName="coach">
+        <option value="">Elija el coach</option>
+        <option *ngFor="let coach of coaches" [ngValue]="coach">{{ coach.name }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="col-form-label">Ruta de aprendizaje</label>
+      <select class="custom-select mb-3" (change)="changeRoute($event)" formControlName="route">
+        <option value="">Elija la ruta de aprendizaje</option>
+        <option *ngFor="let route of routes" [ngValue]="route">{{ route.name }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="file" class="col-form-label">Aprendices</label>
+      <input type="file"  name="file" id="file"
+             accept=".xlsx,.xls,.csv,.txt" ngf-max-size="20MB" fd-input (change)="changeListener($event)" />
+<!--      <input type="file" id="file" name="file" class="form-control"-->
+<!--             (change)="changeListener($event.target.files)" formControlName="apprentices">-->
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancelar</button>
+  <button class="btn btn-primary" (click)="saveTraining()" >Guardar</button>
+</div>

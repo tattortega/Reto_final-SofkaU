@@ -9,13 +9,13 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 @Configuration
-public class RouterRestRutaAprendizaje {
+public class LearningRouteRouterRest {
     @Bean
     public RouterFunction<ServerResponse> routerFunctionRutaAprendizaje(LearningRouteHandler learningRouteHandler) {
         return route(POST("/api/ruta"), learningRouteHandler::createLearningRoute)
                 .andRoute(GET("/api/ruta"), learningRouteHandler::getAllLearningRoute)
                 .andRoute(GET("/api/ruta/{id}"), learningRouteHandler::getLearningRoute)
-                .andRoute(POST("/api/ruta/{id}"), learningRouteHandler::updateLearningRoute)
+                .andRoute(PUT("/api/ruta/{id}"), learningRouteHandler::updateLearningRoute)
                 .andRoute(DELETE("/api/ruta/{id}"), learningRouteHandler::deleteLearningRoute);
     }
 }
