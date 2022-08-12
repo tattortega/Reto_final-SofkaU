@@ -3,6 +3,7 @@ package co.com.sofka.usecase.training.deletetraining;
 import co.com.sofka.model.apprentice.Apprentice;
 import co.com.sofka.model.course.Course;
 import co.com.sofka.model.learningroute.LearningRoute;
+import co.com.sofka.model.route.Route;
 import co.com.sofka.model.training.Training;
 import co.com.sofka.model.training.gateways.TrainingRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,7 +42,9 @@ class DeleteTrainingUseCaseTest {
         LocalDate endDate = LocalDate.parse("2022-12-10");
         String coach = "Julian Lasoo";
         Course course = new Course("1", "Spring boot", "Java-Spring boot-MySQL", 80);
-        LearningRoute learningRoute = new LearningRoute("1", "Backend", "Java-Spring boot", 1, course, "java");
+        List<Route> routeList = new ArrayList<>();
+        routeList.add(new Route(1, course, null));
+        LearningRoute learningRoute = new LearningRoute("1", "Backend", "Java-Spring boot", routeList);
         List<Apprentice> apprentices = new ArrayList<>();
         apprentices.add(new Apprentice("1", "Luis", "Ortega", "cucuta", "masculino", "tatto@mail.com", 123456, "url", false));
         apprentices.add(new Apprentice("2", "Ricardo", "Mantilla", "bogota", "masculino", "tattortega@mail.com", 78956, "url", true));
