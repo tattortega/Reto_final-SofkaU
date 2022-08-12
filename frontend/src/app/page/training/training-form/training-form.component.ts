@@ -22,6 +22,7 @@ export class TrainingFormComponent implements OnInit {
   routes: LearningRoute[] | undefined;
   createTrainingForm: FormGroup;
   createMode: boolean = true
+  filess: FileList | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -79,7 +80,8 @@ export class TrainingFormComponent implements OnInit {
   changeListener(event: Event) {
     const target = event.target as HTMLInputElement;
     const files = target.files as FileList;
-    console.log(files);
+    this.filess = files
+    console.log(this.filess);
   }
 
   // public changeListener(files: EventTarget){
@@ -100,10 +102,14 @@ export class TrainingFormComponent implements OnInit {
   // }
 
   saveTraining() {
-    if (this.createTrainingForm.invalid) {
-      return;
-    }
+    // if (this.createTrainingForm.invalid) {
+    //   return;
+    // }
+    console.log("entro")
+    console.log(this.createMode)
     if (this.createMode) {
+      console.log("entro")
+      console.log(this.createTrainingForm.value)
       this.trainingService.createTraining({
         name: this.createTrainingForm.value.name,
         description: this.createTrainingForm.value.description,
