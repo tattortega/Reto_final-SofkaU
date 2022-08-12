@@ -1,7 +1,8 @@
-package co.com.sofka.usecase.apprentice.deleteapprentice;
+package co.com.sofka.usecase.apprentice.getapprentice;
 
 import co.com.sofka.model.apprentice.Apprentice;
 import co.com.sofka.model.apprentice.gateways.ApprenticeRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -12,10 +13,10 @@ import reactor.test.StepVerifier;
 
 import static org.mockito.Mockito.when;
 
-class DeleteApprenticeUseCaseTest {
+class GetApprenticeUseCaseTest {
 
     @InjectMocks
-    DeleteApprenticeUseCase deleteApprenticeUseCase;
+    GetApprenticeUseCase getApprenticeUseCase;
 
     @Mock
     ApprenticeRepository apprenticeRepository;
@@ -26,7 +27,7 @@ class DeleteApprenticeUseCaseTest {
     }
 
     @Test
-    void deleteApprenticeTest() {
+    void getApprenticeTest() {
         Apprentice apprentice = Apprentice.builder()
                 .id("1")
                 .name("nombre")
@@ -40,9 +41,19 @@ class DeleteApprenticeUseCaseTest {
                 .build();
 
         when(apprenticeRepository.findById("1")).thenReturn(Mono.just(apprentice));
-        when(apprenticeRepository.deleteById("1")).thenReturn(Mono.empty());
 
-        StepVerifier.create(deleteApprenticeUseCase.apply("1"))
+        StepVerifier.create(getApprenticeUseCase.apply("1"))
+                .assertNext(apprentice1 -> {
+                    Assertions.assertEquals("1", apprentice1.getId());
+                    Assertions.assertEquals("nombre", apprentice1.getName());
+                    Assertions.assertEquals("lastname", apprentice1.getLastname());
+                    Assertions.assertEquals("city", apprentice1.getCity());
+                    Assertions.assertEquals("gender", apprentice1.getGender());
+                    Assertions.assertEquals("email", apprentice1.getEmail());
+                    Assertions.assertEquals(1234, apprentice1.getPhoneNumber());
+                    Assertions.assertEquals("photo.png", apprentice1.getPhoto());
+                    Assertions.assertEquals(true, apprentice1.getBilingual());
+                })
                 .expectComplete()
                 .verify();
     }
