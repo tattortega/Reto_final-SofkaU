@@ -2131,7 +2131,9 @@
   "version" "3.0.1"
 
 "@types/node@*", "@types/node@>=10.0.0", "@types/node@>=12.12.47", "@types/node@>=13.7.0":
-  "version" "18.6.4"
+  "integrity" "sha512-GKX1Qnqxo4S+Z/+Z8KKPLpH282LD7jLHWJcVryOflnsnH+BtSDfieR6ObwBMwpnNws0bUK8GI7z0unQf9bARNQ=="
+  "resolved" "https://registry.npmjs.org/@types/node/-/node-18.7.1.tgz"
+  "version" "18.7.1"
 
 "@types/parse-json@^4.0.0":
   "integrity" "sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA=="
@@ -2764,7 +2766,7 @@
     "tar" "^6.1.11"
     "unique-filename" "^1.1.1"
 
-"call-bind@^1.0.0":
+"call-bind@^1.0.0", "call-bind@^1.0.2":
   "integrity" "sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA=="
   "resolved" "https://registry.npmjs.org/call-bind/-/call-bind-1.0.2.tgz"
   "version" "1.0.2"
@@ -3247,7 +3249,9 @@
   "resolved" "https://registry.npmjs.org/define-lazy-prop/-/define-lazy-prop-2.0.0.tgz"
   "version" "2.0.0"
 
-"define-properties@^1.1.3":
+"define-properties@^1.1.4":
+  "integrity" "sha512-uckOqKcfaVvtBdsVkdPv3XjveQJsNQqmhXgRi8uhvWWuPYZCNlzT8qAyblUgNoXdHdjMTzAqeGjAoli8f+bzPA=="
+  "resolved" "https://registry.npmjs.org/define-properties/-/define-properties-1.1.4.tgz"
   "version" "1.1.4"
   dependencies:
     "has-property-descriptors" "^1.0.0"
@@ -3358,7 +3362,9 @@
   "version" "1.1.1"
 
 "electron-to-chromium@^1.4.202":
-  "version" "1.4.211"
+  "integrity" "sha512-iX8GbAMij7cOtJPZo02CClpaPMWjvN5meqXiJXkBgwvraNWTNH0Z7F9tkznI34JRPtWASoPM/xWamq3oNb49GA=="
+  "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.217.tgz"
+  "version" "1.4.217"
 
 "emoji-regex@^8.0.0":
   "integrity" "sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A=="
@@ -3894,6 +3900,8 @@
   "version" "0.4.1"
 
 "glob@^7.1.3":
+  "integrity" "sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q=="
+  "resolved" "https://registry.npmjs.org/glob/-/glob-7.2.3.tgz"
   "version" "7.2.3"
   dependencies:
     "fs.realpath" "^1.0.0"
@@ -3904,6 +3912,8 @@
     "path-is-absolute" "^1.0.0"
 
 "glob@^7.1.4":
+  "integrity" "sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q=="
+  "resolved" "https://registry.npmjs.org/glob/-/glob-7.2.3.tgz"
   "version" "7.2.3"
   dependencies:
     "fs.realpath" "^1.0.0"
@@ -3914,6 +3924,8 @@
     "path-is-absolute" "^1.0.0"
 
 "glob@^7.1.6":
+  "integrity" "sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q=="
+  "resolved" "https://registry.npmjs.org/glob/-/glob-7.2.3.tgz"
   "version" "7.2.3"
   dependencies:
     "fs.realpath" "^1.0.0"
@@ -3924,6 +3936,8 @@
     "path-is-absolute" "^1.0.0"
 
 "glob@^7.1.7":
+  "integrity" "sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q=="
+  "resolved" "https://registry.npmjs.org/glob/-/glob-7.2.3.tgz"
   "version" "7.2.3"
   dependencies:
     "fs.realpath" "^1.0.0"
@@ -3987,7 +4001,7 @@
   dependencies:
     "get-intrinsic" "^1.1.1"
 
-"has-symbols@^1.0.1", "has-symbols@^1.0.3":
+"has-symbols@^1.0.3":
   "integrity" "sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A=="
   "resolved" "https://registry.npmjs.org/has-symbols/-/has-symbols-1.0.3.tgz"
   "version" "1.0.3"
@@ -4911,6 +4925,8 @@
   "version" "1.0.1"
 
 "minimatch@^3.0.4", "minimatch@^3.1.1":
+  "integrity" "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw=="
+  "resolved" "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz"
   "version" "3.1.2"
   dependencies:
     "brace-expansion" "^1.1.7"
@@ -5232,11 +5248,13 @@
   "version" "1.1.1"
 
 "object.assign@^4.1.0":
-  "version" "4.1.2"
+  "integrity" "sha512-ZFJnX3zltyjcYJL0RoCJuzb+11zWGyaDbjgxZbdV7rFEcHQuYxrZqhow67aA7xpes6LhojyFDaBKAFfogQrikA=="
+  "resolved" "https://registry.npmjs.org/object.assign/-/object.assign-4.1.3.tgz"
+  "version" "4.1.3"
   dependencies:
-    "call-bind" "^1.0.0"
-    "define-properties" "^1.1.3"
-    "has-symbols" "^1.0.1"
+    "call-bind" "^1.0.2"
+    "define-properties" "^1.1.4"
+    "has-symbols" "^1.0.3"
     "object-keys" "^1.1.1"
 
 "obuf@^1.0.0", "obuf@^1.1.2":

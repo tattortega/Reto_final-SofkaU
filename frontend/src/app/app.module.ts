@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LearningRouteFormComponent } from './page/learning-route/learning-route-form/learning-route-form.component';
-import { AddCourseToRouteComponent } from './page/learning-route/add-course-to-route/add-course-to-route.component';
+import { AddCourseToRouteComponent } from './page/learning-route/add-course-to-route-form/add-course-to-route.component';
 import {ToastrModule} from 'ngx-toastr';
 
 import { AngularFireModule } from '@angular/fire/compat';
