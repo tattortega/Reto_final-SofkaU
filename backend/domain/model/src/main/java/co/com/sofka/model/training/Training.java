@@ -1,6 +1,7 @@
 package co.com.sofka.model.training;
 
 import co.com.sofka.model.apprentice.Apprentice;
+import co.com.sofka.model.learningroute.LearningRoute;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +23,6 @@ public class Training {
     private LocalDate startDate;
     private LocalDate endDate;
     private String coach;
-    private String routeLearning;
+    private LearningRoute learningRoute;
     private List<Apprentice> apprentices;
 }
