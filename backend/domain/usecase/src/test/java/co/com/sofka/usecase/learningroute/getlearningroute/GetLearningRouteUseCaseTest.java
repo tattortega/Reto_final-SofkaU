@@ -32,8 +32,6 @@ class GetLearningRouteUseCaseTest {
                 .id("1")
                 .name("ruta 1")
                 .description("descripcion")
-                .level(1)
-                .prerequisite("prerrequisito")
                 .build();
 
         when(learningRouteRepository.findById("1")).thenReturn(Mono.just(learningRoute));
@@ -43,8 +41,6 @@ class GetLearningRouteUseCaseTest {
                     Assertions.assertEquals("1", route.getId());
                     Assertions.assertEquals("ruta 1", route.getName());
                     Assertions.assertEquals("descripcion", route.getDescription());
-                    Assertions.assertEquals(1, route.getLevel());
-                    Assertions.assertEquals("prerrequisito", route.getPrerequisite());
                 })
                 .expectComplete()
                 .verify();

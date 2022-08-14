@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LearningRouteFormComponent } from './page/learning-route/learning-route-form/learning-route-form.component';
+import { AddCourseToRouteComponent } from './page/learning-route/add-course-to-route-form/add-course-to-route.component';
 import {ToastrModule} from 'ngx-toastr';
 
 import { AngularFireModule } from '@angular/fire/compat';
@@ -34,17 +36,23 @@ import { CourseService } from './shared/services/course/course.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { TrainingComponent } from './page/training/training.component';
+import { TrainingFormComponent } from './page/training/training-form/training-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     NavComponent,
-    LearningRouteComponent,
     SignInComponent,
     ProfileComponent,
+    LearningRouteComponent,
+    LearningRouteFormComponent,
+    AddCourseToRouteComponent,
+    CourseComponent,
     CourseFormComponent,
-    CourseComponent
+    TrainingComponent,
+    TrainingFormComponent
   ],
   imports: [
     BrowserModule,

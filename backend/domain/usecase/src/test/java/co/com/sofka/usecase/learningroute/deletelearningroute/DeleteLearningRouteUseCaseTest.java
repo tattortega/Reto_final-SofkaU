@@ -31,8 +31,6 @@ class DeleteLearningRouteUseCaseTest {
                 .id("1")
                 .name("ruta 1")
                 .description("descripcion")
-                .level(1)
-                .prerequisite("prerrequisito")
                 .build();
 
         when(learningRouteRepository.deleteById("1")).thenReturn(Mono.empty());

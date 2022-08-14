@@ -32,16 +32,12 @@ class UpdateLearningRouteUseCaseTest {
                 .id("1")
                 .name("ruta 1")
                 .description("descripcion")
-                .level(1)
-                .prerequisite("prerrequisito")
                 .build();
 
         LearningRoute learningRouteUpdate = LearningRoute.builder()
                 .id("1")
                 .name("ruta update")
                 .description("descripcion update")
-                .level(1)
-                .prerequisite("prerrequisito update")
                 .build();
 
         when(learningRouteRepository.save(learningRoute)).thenReturn(Mono.just(learningRoute));
@@ -52,8 +48,6 @@ class UpdateLearningRouteUseCaseTest {
                     Assertions.assertEquals("1", route.getId());
                     Assertions.assertEquals("ruta update", route.getName());
                     Assertions.assertEquals("descripcion update", route.getDescription());
-                    Assertions.assertEquals(1, route.getLevel());
-                    Assertions.assertEquals("prerrequisito update", route.getPrerequisite());
                 })
                 .expectComplete()
                 .verify();

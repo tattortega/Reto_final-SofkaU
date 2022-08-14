@@ -31,16 +31,12 @@ class GetAllLearningRouteUseCaseTest {
                 .id("1")
                 .name("ruta 1")
                 .description("descripcion")
-                .level(1)
-                .prerequisite("prerrequisito")
                 .build();
 
         LearningRoute learningRoute2 = LearningRoute.builder()
                 .id("2")
                 .name("ruta 2")
                 .description("descripcion")
-                .level(1)
-                .prerequisite("prerrequisito")
                 .build();
 
         Flux<LearningRoute> routeFlux = Flux.just(learningRoute1, learningRoute2);

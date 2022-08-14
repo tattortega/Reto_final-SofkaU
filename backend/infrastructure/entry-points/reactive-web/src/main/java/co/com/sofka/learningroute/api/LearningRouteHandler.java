@@ -13,6 +13,13 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
+/**
+ * Handler para implementar los casos de uso de LearningRoute
+ *
+ * @author Santiago Ospina <santiago.m200@outlook.es>
+ * @version 1.0.0 2022-08-12
+ * @since 1.0.0
+ */
 @Component
 @RequiredArgsConstructor
 public class LearningRouteHandler {

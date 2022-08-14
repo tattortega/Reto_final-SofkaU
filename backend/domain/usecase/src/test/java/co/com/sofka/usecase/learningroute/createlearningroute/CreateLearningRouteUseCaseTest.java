@@ -34,8 +34,6 @@ class CreateLearningRouteUseCaseTest {
                 .id("1")
                 .name("ruta 1")
                 .description("descripcion")
-                .level(1)
-                .prerequisite("prerrequisito")
                 .build();
 
         when(learningRouteRepository.save(Mockito.any(LearningRoute.class))).thenReturn(Mono.just(learningRoute));
@@ -45,8 +43,6 @@ class CreateLearningRouteUseCaseTest {
                     Assertions.assertEquals("1", ruta.getId());
                     Assertions.assertEquals("ruta 1", ruta.getName());
                     Assertions.assertEquals("descripcion", ruta.getDescription());
-                    Assertions.assertEquals(1, ruta.getLevel());
-                    Assertions.assertEquals("prerrequisito", ruta.getPrerequisite());
                 })
                 .expectComplete()
                 .verify();
